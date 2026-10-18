@@ -1,0 +1,52 @@
+{
+  "name": "rufree",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "node scripts/run.mjs vite --host 127.0.0.1",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "test": "node scripts/run.mjs vitest --config vitest.config.ts",
+    "test:integration": "node scripts/run.mjs vitest run --config vitest.integration.config.ts",
+    "test:e2e": "node scripts/run.mjs playwright test",
+    "build": "node scripts/run.mjs vite build",
+    "deploy:dry-run": "npm run build && node scripts/run.mjs wrangler deploy --dry-run",
+    "db:migrate:local": "node scripts/run.mjs wrangler d1 migrations apply DB --local",
+    "db:migrate:staging": "node scripts/remote.mjs migrate staging",
+    "db:migrate:production": "node scripts/remote.mjs migrate production",
+    "deploy:staging": "node scripts/remote.mjs deploy staging",
+    "deploy:production": "node scripts/remote.mjs deploy production",
+    "types": "node scripts/run.mjs wrangler types",
+    "licenses": "node scripts/licenses.mjs"
+  },
+  "dependencies": {
+    "@js-temporal/polyfill": "0.5.1",
+    "oauth4webapi": "3.8.8",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.13.0",
+    "@cloudflare/vite-plugin": "1.63.1",
+    "@cloudflare/vitest-plugin": "1.4.0",
+    "@cloudflare/workers-types": "5.20261009.1",
+    "@eslint/js": "10.0.1",
+    "@playwright/test": "1.64.0",
+    "@types/node": "26.6.4",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vitejs/plugin-react": "6.1.2",
+    "eslint": "10.12.0",
+    "prettier": "3.9.9",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.71.1",
+    "vite": "8.3.4",
+    "vitest": "5.0.3",
+    "wrangler": "4.149.0"
+  }
+}

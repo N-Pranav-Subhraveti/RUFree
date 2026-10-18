@@ -1,0 +1,4 @@
+# Copy to .dev.vars and fill locally. Never commit .dev.vars.
+GOOGLE_CLIENT_ID="713422493477-nbguv884fnqfigq8p7scrldnm6kaa3cb.apps.googleusercontent.com"
+GOOGLE_CLIENT_SECRET=""
+ALLOWED_EMAILS=""

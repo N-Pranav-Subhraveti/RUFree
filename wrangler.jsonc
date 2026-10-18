@@ -1,0 +1,25 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "rufree-local",
+  "main": "src/server/index.ts",
+  "compatibility_date": "2026-10-06",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
+  "triggers": { "crons": ["* * * * *"] },
+  "assets": {
+    "directory": "./dist/client",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*"],
+  },
+  "vars": { "ENVIRONMENT": "local", "APP_ORIGIN": "http://127.0.0.1:5173" },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "rufree-local",
+      "database_id": "00000000-0000-0000-0000-000000000001",
+      "migrations_dir": "migrations",
+    },
+  ],
+  "observability": { "enabled": true, "head_sampling_rate": 0.1 },
+}
